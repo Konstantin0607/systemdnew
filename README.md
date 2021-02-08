@@ -1,11 +1,11 @@
-#1.Написать сервис, который будет раз в 30 секунд мониторить лог на предмет наличия ключевого слова.
-# Файл и слово должны задаваться в /etc/sysconfig.
+#1.РќР°РїРёСЃР°С‚СЊ СЃРµСЂРІРёСЃ, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ СЂР°Р· РІ 30 СЃРµРєСѓРЅРґ РјРѕРЅРёС‚РѕСЂРёС‚СЊ Р»РѕРі РЅР° РїСЂРµРґРјРµС‚ РЅР°Р»РёС‡РёСЏ РєР»СЋС‡РµРІРѕРіРѕ СЃР»РѕРІР°.
+# Р¤Р°Р№Р» Рё СЃР»РѕРІРѕ РґРѕР»Р¶РЅС‹ Р·Р°РґР°РІР°С‚СЊСЃСЏ РІ /etc/sysconfig.
 
-#Создаем файл конфигурации для сервиса
+#РЎРѕР·РґР°РµРј С„Р°Р№Р» РєРѕРЅС„РёРіСѓСЂР°С†РёРё РґР»СЏ СЃРµСЂРІРёСЃР°
 
             touch /etc/sysconfig/watchlog
 
-#Зполняем его
+#Р—РїРѕР»РЅСЏРµРј РµРіРѕ
 
            # Configuration file for my watchdog service
            # Place it to /etc/sysconfig
@@ -14,12 +14,12 @@
            LOG=/var/log/watchlog.log
 
 
-#Затем создаем /var/log/watchlog.log и пишем туда строку ALERT
+#Р—Р°С‚РµРј СЃРѕР·РґР°РµРј /var/log/watchlog.log Рё РїРёС€РµРј С‚СѓРґР° СЃС‚СЂРѕРєСѓ ALERT
 
             touch /var/log/watchlog.log
 
 
-#Далее создаем скрипт nano /opt/watchlog.sh
+#Р”Р°Р»РµРµ СЃРѕР·РґР°РµРј СЃРєСЂРёРїС‚ nano /opt/watchlog.sh
 
             #!/bin/bash
             WORD=$1
@@ -27,7 +27,7 @@
             DATE=`date`
             if grep $WORD $LOG &> /dev/null
             then
-            logger "$DATE: I found word, Master!" # logger отправляет лог в системный журнал (/var/log/messages)
+            logger "$DATE: I found word, Master!" # logger РѕС‚РїСЂР°РІР»СЏРµС‚ Р»РѕРі РІ СЃРёСЃС‚РµРјРЅС‹Р№ Р¶СѓСЂРЅР°Р» (/var/log/messages)
             else
             exit 0
             fi
@@ -36,7 +36,7 @@
            chmod +x /opt/watchlog.sh
 
 
-#Далее создаем unit для сервиса
+#Р”Р°Р»РµРµ СЃРѕР·РґР°РµРј unit РґР»СЏ СЃРµСЂРІРёСЃР°
 
            nano /etc/systemd/system/watchlog.service
 
@@ -47,7 +47,7 @@
            EnvironmentFile=/etc/sysconfig/watchlog
            ExecStart=/opt/watchlog.sh $WORD $LOG
 
-#Создаем unit для таймера, timer файл
+#РЎРѕР·РґР°РµРј unit РґР»СЏ С‚Р°Р№РјРµСЂР°, timer С„Р°Р№Р»
 
            nano /etc/systemd/system/watchlog.timer
 
@@ -61,14 +61,14 @@
            WantedBy=multi-user.target
 
 
-#Затем достаточно только стартануть timer:
+#Р—Р°С‚РµРј РґРѕСЃС‚Р°С‚РѕС‡РЅРѕ С‚РѕР»СЊРєРѕ СЃС‚Р°СЂС‚Р°РЅСѓС‚СЊ timer:
 
            systemctl enable watchlog.timer
 
            systemctl start watchlog.timer
 
 
-#Выполняем команду
+#Р’С‹РїРѕР»РЅСЏРµРј РєРѕРјР°РЅРґСѓ
 
            tail -f /var/log/messages
 
@@ -89,17 +89,17 @@
 
 
 
-#2.Из epel установить spawn-fcgi и переписать init-скрипт на unit-файл.
-# Имя сервиса должно так же называться
+#2.РР· epel СѓСЃС‚Р°РЅРѕРІРёС‚СЊ spawn-fcgi Рё РїРµСЂРµРїРёСЃР°С‚СЊ init-СЃРєСЂРёРїС‚ РЅР° unit-С„Р°Р№Р».
+# РРјСЏ СЃРµСЂРІРёСЃР° РґРѕР»Р¶РЅРѕ С‚Р°Рє Р¶Рµ РЅР°Р·С‹РІР°С‚СЊСЃСЏ
 
-#Устанавливаем
+#РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј
 
            yum install epel-release -y && yum install spawn-fcgi php php-cli mod_fcgid httpd -y
 
 
-#etc/rc.d/init.d/spawn-fcg - скрипт, который будет переписан
+#etc/rc.d/init.d/spawn-fcg - СЃРєСЂРёРїС‚, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РїРµСЂРµРїРёСЃР°РЅ
 
-#Заходим в /etc/sysconfig/spawn-fcgi и приводим его к следующему виду:
+#Р—Р°С…РѕРґРёРј РІ /etc/sysconfig/spawn-fcgi Рё РїСЂРёРІРѕРґРёРј РµРіРѕ Рє СЃР»РµРґСѓСЋС‰РµРјСѓ РІРёРґСѓ:
 
            nano /etc/sysconfig/spawn-fcgi
 
@@ -114,7 +114,7 @@
            OPTIONS="-u apache -g apache -s $SOCKET -S -M 0600 -C 32 -F 1 -- /usr/bin/php-cgi"
 
 
-#Создаем unit файл
+#РЎРѕР·РґР°РµРј unit С„Р°Р№Р»
 
            nano /etc/systemd/system/spawn-fcgi.service
 
@@ -131,7 +131,7 @@
            [Install]
            WantedBy=multi-user.target
 
-#проверяем что все успешно работает,выполняем команды
+#РїСЂРѕРІРµСЂСЏРµРј С‡С‚Рѕ РІСЃРµ СѓСЃРїРµС€РЅРѕ СЂР°Р±РѕС‚Р°РµС‚,РІС‹РїРѕР»РЅСЏРµРј РєРѕРјР°РЅРґС‹
 
            systemctl start spawn-fcgi
 
@@ -181,18 +181,18 @@ Feb 08 09:31:53 otuslinux systemd[1]: Started Spawn-fcgi startup service by Otus
 Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otus
 
 
-#3.Дополнить юнит-файл apache httpd возможностьб запустить несколько инстансов сервера с разными конфигами:
+#3.Р”РѕРїРѕР»РЅРёС‚СЊ СЋРЅРёС‚-С„Р°Р№Р» apache httpd РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊР± Р·Р°РїСѓСЃС‚РёС‚СЊ РЅРµСЃРєРѕР»СЊРєРѕ РёРЅСЃС‚Р°РЅСЃРѕРІ СЃРµСЂРІРµСЂР° СЃ СЂР°Р·РЅС‹РјРё РєРѕРЅС„РёРіР°РјРё:
 
-#Копируем файл из /usr/lib/systemd/system/
+#РљРѕРїРёСЂСѓРµРј С„Р°Р№Р» РёР· /usr/lib/systemd/system/
 
            cp /usr/lib/systemd/system/httpd.service /etc/systemd/system
 
-#переименновываем его
+#РїРµСЂРµРёРјРµРЅРЅРѕРІС‹РІР°РµРј РµРіРѕ
 
            mv /etc/systemd/system/httpd.service /etc/systemd/system/httpd@.service
 
 
-#приводим его к данному виду
+#РїСЂРёРІРѕРґРёРј РµРіРѕ Рє РґР°РЅРЅРѕРјСѓ РІРёРґСѓ
 
            [Unit]
            Description=The Apache HTTP Server
@@ -202,7 +202,7 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
            [Service]
 
            Type=notify
-           EnvironmentFile=/etc/sysconfig/httpd-%I #(%I - это и есть подстановка)
+           EnvironmentFile=/etc/sysconfig/httpd-%I #(%I - СЌС‚Рѕ Рё РµСЃС‚СЊ РїРѕРґСЃС‚Р°РЅРѕРІРєР°)
            ExecStart=/usr/sbin/httpd $OPTIONS -DFOREGROUND
            ExecReload=/usr/sbin/httpd $OPTIONS -k graceful
            ExecStop=/bin/kill -WINCH ${MAINPID}
@@ -213,21 +213,21 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
            WantedBy=multi-user.target
 
 
-#Переходим в каталог с конфиругационными файлами и путем копирования делаем 2 конфига
-#в нашем случае это будут first.conf и second.conf
+#РџРµСЂРµС…РѕРґРёРј РІ РєР°С‚Р°Р»РѕРі СЃ РєРѕРЅС„РёСЂСѓРіР°С†РёРѕРЅРЅС‹РјРё С„Р°Р№Р»Р°РјРё Рё РїСѓС‚РµРј РєРѕРїРёСЂРѕРІР°РЅРёСЏ РґРµР»Р°РµРј 2 РєРѕРЅС„РёРіР°
+#РІ РЅР°С€РµРј СЃР»СѓС‡Р°Рµ СЌС‚Рѕ Р±СѓРґСѓС‚ first.conf Рё second.conf
 
            scp httpd.conf first.conf
            scp httpd.conf second.conf
 
 
 
-#Для удачного запуска, в конфигурационных файлах должны быть указаны уникальные для каждого экземпляра опции Listen 8080 и путь до PidFile.
+#Р”Р»СЏ СѓРґР°С‡РЅРѕРіРѕ Р·Р°РїСѓСЃРєР°, РІ РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹С… С„Р°Р№Р»Р°С… РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ СѓРєР°Р·Р°РЅС‹ СѓРЅРёРєР°Р»СЊРЅС‹Рµ РґР»СЏ РєР°Р¶РґРѕРіРѕ СЌРєР·РµРјРїР»СЏСЂР° РѕРїС†РёРё Listen 8080 Рё РїСѓС‚СЊ РґРѕ PidFile.
 
 
            nano second.conf
       
-#PidFile /var/run/httpd-second.pid - т.е. должен быть указан файл пида
-#Listen 8080 - указан порт, который будет отличаться от другого инстанса
+#PidFile /var/run/httpd-second.pid - С‚.Рµ. РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ СѓРєР°Р·Р°РЅ С„Р°Р№Р» РїРёРґР°
+#Listen 8080 - СѓРєР°Р·Р°РЅ РїРѕСЂС‚, РєРѕС‚РѕСЂС‹Р№ Р±СѓРґРµС‚ РѕС‚Р»РёС‡Р°С‚СЊСЃСЏ РѕС‚ РґСЂСѓРіРѕРіРѕ РёРЅСЃС‚Р°РЅСЃР°
 
 
 
@@ -236,8 +236,8 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
            systemctl status httpd@second.service
 
 
-#Переходим в sysconfig
-#Таким же путем создаем два файла
+#РџРµСЂРµС…РѕРґРёРј РІ sysconfig
+#РўР°РєРёРј Р¶Рµ РїСѓС‚РµРј СЃРѕР·РґР°РµРј РґРІР° С„Р°Р№Р»Р°
 
 
            scp httpd httpd-first
@@ -245,17 +245,17 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
 
 
 
-#меняем файл httpd-first 
+#РјРµРЅСЏРµРј С„Р°Р№Р» httpd-first 
 
            #OPTIONS=-f conf/first.conf
 
 
-#меняем файл httpd-second
+#РјРµРЅСЏРµРј С„Р°Р№Р» httpd-second
 
            #OPTIONS=-f conf/second.conf
 
 
-#Запускаем сервис с первым конфигурационным файлом и проверяем статус
+#Р—Р°РїСѓСЃРєР°РµРј СЃРµСЂРІРёСЃ СЃ РїРµСЂРІС‹Рј РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹Рј С„Р°Р№Р»РѕРј Рё РїСЂРѕРІРµСЂСЏРµРј СЃС‚Р°С‚СѓСЃ
 
 
                 systemctl start httpd@first.service
@@ -281,7 +281,7 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
 
 
 
-#Запускаем сервис со вторым конфигурационным файлом и проверяем статус
+#Р—Р°РїСѓСЃРєР°РµРј СЃРµСЂРІРёСЃ СЃРѕ РІС‚РѕСЂС‹Рј РєРѕРЅС„РёРіСѓСЂР°С†РёРѕРЅРЅС‹Рј С„Р°Р№Р»РѕРј Рё РїСЂРѕРІРµСЂСЏРµРј СЃС‚Р°С‚СѓСЃ
 
 
            systemctl start httpd@second.service
@@ -303,9 +303,7 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
            +-4867 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
            +-4868 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
            L-4869 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-
-
-#Проверяем порты на которых работают сервисы
+#РџСЂРѕРІРµСЂСЏРµРј РїРѕСЂС‚С‹ РЅР° РєРѕС‚РѕСЂС‹С… СЂР°Р±РѕС‚Р°СЋС‚ СЃРµСЂРІРёСЃС‹
 
 
            ss -tnlp
@@ -321,6 +319,17 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
            LISTEN     0      128                                                     :::22                                                                  :::*                   users:(("sshd",pid=943,fd=4))
            LISTEN     0      100                                                    ::1:25                                                                  :::*                   users:(("master",pid=1144,fd=14))
 
+
+
+
+
+
+
+
+
+
+
+            
 
 
 
