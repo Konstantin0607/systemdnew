@@ -139,46 +139,46 @@
 
 
             spawn-fcgi.service - Spawn-fcgi startup service by Otus
-   Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor preset: disabled)
-   Active: active (running) since Mon 2021-02-08 09:31:53 UTC; 9s ago
- Main PID: 4107 (php-cgi)
-   CGroup: /system.slice/spawn-fcgi.service
-           +-4107 /usr/bin/php-cgi
-           +-4108 /usr/bin/php-cgi
-           +-4109 /usr/bin/php-cgi
-           +-4110 /usr/bin/php-cgi
-           +-4111 /usr/bin/php-cgi
-           +-4112 /usr/bin/php-cgi
-           +-4113 /usr/bin/php-cgi
-           +-4114 /usr/bin/php-cgi
-           +-4115 /usr/bin/php-cgi
-           +-4116 /usr/bin/php-cgi
-           +-4117 /usr/bin/php-cgi
-           +-4118 /usr/bin/php-cgi
-           +-4119 /usr/bin/php-cgi
-           +-4120 /usr/bin/php-cgi
-           +-4121 /usr/bin/php-cgi
-           +-4122 /usr/bin/php-cgi
-           +-4123 /usr/bin/php-cgi
-           +-4124 /usr/bin/php-cgi
-           +-4125 /usr/bin/php-cgi
-           +-4126 /usr/bin/php-cgi
-           +-4127 /usr/bin/php-cgi
-           +-4128 /usr/bin/php-cgi
-           +-4129 /usr/bin/php-cgi
-           +-4130 /usr/bin/php-cgi
-           +-4131 /usr/bin/php-cgi
-           +-4132 /usr/bin/php-cgi
-           +-4133 /usr/bin/php-cgi
-           +-4134 /usr/bin/php-cgi
-           +-4135 /usr/bin/php-cgi
-           +-4136 /usr/bin/php-cgi
-           +-4137 /usr/bin/php-cgi
-           +-4138 /usr/bin/php-cgi
-           L-4139 /usr/bin/php-cgi
+         Loaded: loaded (/etc/systemd/system/spawn-fcgi.service; disabled; vendor preset: disabled)
+      Active: active (running) since Mon 2021-02-08 09:31:53 UTC; 9s ago
+    Main PID: 4107 (php-cgi)
+      CGroup: /system.slice/spawn-fcgi.service
+               +-4107 /usr/bin/php-cgi
+               +-4108 /usr/bin/php-cgi
+               +-4109 /usr/bin/php-cgi
+               +-4110 /usr/bin/php-cgi
+               +-4111 /usr/bin/php-cgi
+               +-4112 /usr/bin/php-cgi
+               +-4113 /usr/bin/php-cgi
+               +-4114 /usr/bin/php-cgi
+               +-4115 /usr/bin/php-cgi
+               +-4116 /usr/bin/php-cgi
+               +-4117 /usr/bin/php-cgi
+               +-4118 /usr/bin/php-cgi
+               +-4119 /usr/bin/php-cgi
+               +-4120 /usr/bin/php-cgi
+               +-4121 /usr/bin/php-cgi
+               +-4122 /usr/bin/php-cgi
+               +-4123 /usr/bin/php-cgi
+               +-4124 /usr/bin/php-cgi
+               +-4125 /usr/bin/php-cgi
+               +-4126 /usr/bin/php-cgi
+               +-4127 /usr/bin/php-cgi
+               +-4128 /usr/bin/php-cgi
+               +-4129 /usr/bin/php-cgi
+               +-4130 /usr/bin/php-cgi
+               +-4131 /usr/bin/php-cgi
+               +-4132 /usr/bin/php-cgi
+               +-4133 /usr/bin/php-cgi
+               +-4134 /usr/bin/php-cgi
+               +-4135 /usr/bin/php-cgi
+               +-4136 /usr/bin/php-cgi
+               +-4137 /usr/bin/php-cgi
+               +-4138 /usr/bin/php-cgi
+               L-4139 /usr/bin/php-cgi
 
-Feb 08 09:31:53 otuslinux systemd[1]: Started Spawn-fcgi startup service by Otus.
-Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otus
+        Feb 08 09:31:53 otuslinux systemd[1]: Started Spawn-fcgi startup service by Otus.
+        Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otus
 
 
 #3.Дополнить юнит-файл apache httpd возможностьб запустить несколько инстансов сервера с разными конфигами:
@@ -264,20 +264,20 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
 
 
             httpd@first.service - The Apache HTTP Server
-   Loaded: loaded (/etc/systemd/system/httpd@.service; disabled; vendor preset: disabled)
-   Active: active (running) since Mon 2021-02-08 09:53:32 UTC; 13s ago
-     Docs: man:httpd(8)
-           man:apachectl(8)
- Main PID: 4833 (httpd)
-   Status: "Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec"
-   CGroup: /system.slice/system-httpd.slice/httpd@first.service
-           +-4833 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           +-4834 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           +-4835 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           +-4836 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           +-4837 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           +-4838 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
-           L-4839 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+     Loaded: loaded (/etc/systemd/system/httpd@.service; disabled; vendor preset: disabled)
+     Active: active (running) since Mon 2021-02-08 09:53:32 UTC; 13s ago
+       Docs: man:httpd(8)
+             man:apachectl(8)
+    Main PID: 4833 (httpd)
+     Status: "Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec"
+     CGroup: /system.slice/system-httpd.slice/httpd@first.service
+              +-4833 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              +-4834 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              +-4835 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              +-4836 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              +-4837 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              +-4838 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
+              L-4839 /usr/sbin/httpd -f conf/first.conf -DFOREGROUND
 
 
 
@@ -289,20 +289,20 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
 
 
             httpd@second.service - The Apache HTTP Server
-   Loaded: loaded (/etc/systemd/system/httpd@.service; disabled; vendor preset: disabled)
-   Active: active (running) since Mon 2021-02-08 10:02:38 UTC; 12s ago
-     Docs: man:httpd(8)
-           man:apachectl(8)
- Main PID: 4863 (httpd)
-   Status: "Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec"
-   CGroup: /system.slice/system-httpd.slice/httpd@second.service
-           +-4863 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           +-4864 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           +-4865 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           +-4866 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           +-4867 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           +-4868 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
-           L-4869 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+     Loaded: loaded (/etc/systemd/system/httpd@.service; disabled; vendor preset: disabled)
+     Active: active (running) since Mon 2021-02-08 10:02:38 UTC; 12s ago
+       Docs: man:httpd(8)
+             man:apachectl(8)
+    Main PID: 4863 (httpd)
+     Status: "Total requests: 0; Current requests/sec: 0; Current traffic:   0 B/sec"
+     CGroup: /system.slice/system-httpd.slice/httpd@second.service
+               +-4863 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               +-4864 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               +-4865 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               +-4866 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               +-4867 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               +-4868 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
+               L-4869 /usr/sbin/httpd -f conf/second.conf -DFOREGROUND
 #Проверяем порты на которых работают сервисы
 
 
@@ -310,14 +310,14 @@ Feb 08 09:31:53 otuslinux systemd[1]: Starting Spawn-fcgi startup service by Otu
 
 
            State      Recv-Q Send-Q                                       Local Address:Port                                                      Peer Address:Port
-           LISTEN     0      128                                                      *:111                                                                  *:*                   users:(("rpcbind",pid=621,fd=8))
-           LISTEN     0      128                                                      *:22                                                                   *:*                   users:(("sshd",pid=943,fd=3))
-           LISTEN     0      100                                              127.0.0.1:25                                                                   *:*                   users:(("master",pid=1144,fd=13))
-           LISTEN     0      128                                                     :::111                                                                 :::*                   users:(("rpcbind",pid=621,fd=11))
-           LISTEN     0      128                                                     :::8080                                                                :::*                   users:(("httpd",pid=4869,fd=4),("httpd",pid=4868,fd=4),("httpd",pid=4867,fd=4),("httpd",pid=4866,fd=4),("httpd",pid=4865,fd=4),("httpd",pid=4864,fd=4),("httpd",pid=4863,fd=4))
-           LISTEN     0      128                                                     :::80                                                                  :::*                   users:(("httpd",pid=4839,fd=4),("httpd",pid=4838,fd=4),("httpd",pid=4837,fd=4),("httpd",pid=4836,fd=4),("httpd",pid=4835,fd=4),("httpd",pid=4834,fd=4),("httpd",pid=4833,fd=4))
-           LISTEN     0      128                                                     :::22                                                                  :::*                   users:(("sshd",pid=943,fd=4))
-           LISTEN     0      100                                                    ::1:25                                                                  :::*                   users:(("master",pid=1144,fd=14))
+           LISTEN     0      128                                                      *:111                                                                  *:*                       users:(("rpcbind",pid=621,fd=8))
+           LISTEN     0      128                                                      *:22                                                                   *:*                       users:(("sshd",pid=943,fd=3))
+           LISTEN     0      100                                              127.0.0.1:25                                                                   *:*                       users:(("master",pid=1144,fd=13))
+           LISTEN     0      128                                                     :::111                                                                 :::*                       users:(("rpcbind",pid=621,fd=11))
+           LISTEN     0      128                                                     :::8080                                                                :::*                       users:(("httpd",pid=4869,fd=4),("httpd",pid=4868,fd=4),("httpd",pid=4867,fd=4),("httpd",pid=4866,fd=4),("httpd",pid=4865,fd=4),("httpd",pid=4864,fd=4),       ("httpd",pid=4863,fd=4))
+           LISTEN     0      128                                                     :::80                                                                  :::*                       users:(("httpd",pid=4839,fd=4),("httpd",pid=4838,fd=4),("httpd",pid=4837,fd=4),("httpd",pid=4836,fd=4),("httpd",pid=4835,fd=4),("httpd",pid=4834,fd=4),("httpd",pid=4833,fd=4))
+           LISTEN     0      128                                                     :::22                                                                  :::*                       users:(("sshd",pid=943,fd=4))
+           LISTEN     0      100                                                    ::1:25                                                                  :::*                       users:(("master",pid=1144,fd=14))
 
 
 
