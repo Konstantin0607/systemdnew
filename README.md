@@ -73,19 +73,19 @@
            tail -f /var/log/messages
 
 
-           Feb  8 09:11:55 localhost systemd: Stopping User Slice of vagrant.
-           Feb  8 09:12:17 localhost systemd: Created slice User Slice of vagrant.
-           Feb  8 09:12:17 localhost systemd: Starting User Slice of vagrant.
-           Feb  8 09:12:17 localhost systemd: Started Session 4 of user vagrant.
-           Feb  8 09:12:17 localhost systemd-logind: New session 4 of user vagrant.
-           Feb  8 09:12:17 localhost systemd: Starting Session 4 of user vagrant.
-           Feb  8 09:13:42 localhost yum[3770]: Installed: nano-2.3.1-10.el7.x86_64
-           Feb  8 09:22:03 localhost systemd: Reloading.
-           Feb  8 09:22:25 localhost systemd: Started Run watchlog script every 30 second.
-           Feb  8 09:22:25 localhost systemd: Starting Run watchlog script every 30 second.
-           Feb  8 09:23:07 localhost systemd: Starting My watchlog service...
-           Feb  8 09:23:07 localhost root: Mon Feb  8 09:23:07 UTC 2021: I found word, Master!
-           Feb  8 09:23:07 localhost systemd: Started My watchlog service.
+              Feb  8 09:11:55 localhost systemd: Stopping User Slice of vagrant.
+              Feb  8 09:12:17 localhost systemd: Created slice User Slice of vagrant.
+              Feb  8 09:12:17 localhost systemd: Starting User Slice of vagrant.
+              Feb  8 09:12:17 localhost systemd: Started Session 4 of user vagrant.
+              Feb  8 09:12:17 localhost systemd-logind: New session 4 of user vagrant.
+              Feb  8 09:12:17 localhost systemd: Starting Session 4 of user vagrant.
+              Feb  8 09:13:42 localhost yum[3770]: Installed: nano-2.3.1-10.el7.x86_64
+              Feb  8 09:22:03 localhost systemd: Reloading.
+              Feb  8 09:22:25 localhost systemd: Started Run watchlog script every 30 second.
+              Feb  8 09:22:25 localhost systemd: Starting Run watchlog script every 30 second.
+              Feb  8 09:23:07 localhost systemd: Starting My watchlog service...
+              Feb  8 09:23:07 localhost root: Mon Feb  8 09:23:07 UTC 2021: I found word, Master!
+              Feb  8 09:23:07 localhost systemd: Started My watchlog service.
 
 
 
