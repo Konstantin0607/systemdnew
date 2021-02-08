@@ -214,6 +214,9 @@
 
 
 #Переходим в каталог с конфиругационными файлами и путем копирования делаем 2 конфига
+
+           cd /etc/httpd/conf
+
 #в нашем случае это будут first.conf и second.conf
 
            scp httpd.conf first.conf
